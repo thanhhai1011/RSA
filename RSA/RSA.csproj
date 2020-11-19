@@ -64,7 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="controller\Rolemodel.cs" />
+    <Compile Include="model\Rolemodel.cs" />
     <Compile Include="controller\Usercontroller.cs" />
     <Compile Include="module\Api.cs" />
     <Compile Include="view\Admin.cs">
