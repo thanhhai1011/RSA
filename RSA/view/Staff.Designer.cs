@@ -29,63 +29,51 @@
         private void InitializeComponent()
         {
             this.btnDown = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnText = new System.Windows.Forms.Button();
             this.btnRSA = new System.Windows.Forms.Button();
             this.btnFile = new System.Windows.Forms.Button();
             this.txtFile = new System.Windows.Forms.TextBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // btnDown
             // 
-            this.btnDown.Location = new System.Drawing.Point(503, 320);
+            this.btnDown.Location = new System.Drawing.Point(569, 69);
             this.btnDown.Name = "btnDown";
             this.btnDown.Size = new System.Drawing.Size(111, 23);
             this.btnDown.TabIndex = 13;
-            this.btnDown.Text = "Tải xuống";
+            this.btnDown.Text = "Generate";
             this.btnDown.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(185, 320);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(278, 20);
-            this.textBox2.TabIndex = 12;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(306, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(218, 31);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Phần Mềm RSA";
+            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
             // 
             // btnText
             // 
-            this.btnText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnText.Location = new System.Drawing.Point(185, 179);
+            this.btnText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnText.Location = new System.Drawing.Point(40, 38);
             this.btnText.Name = "btnText";
-            this.btnText.Size = new System.Drawing.Size(185, 100);
+            this.btnText.Size = new System.Drawing.Size(103, 25);
             this.btnText.TabIndex = 10;
             this.btnText.Text = "Văn Bản";
             this.btnText.UseVisualStyleBackColor = true;
+            this.btnText.Click += new System.EventHandler(this.btnText_Click);
             // 
             // btnRSA
             // 
-            this.btnRSA.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRSA.Location = new System.Drawing.Point(429, 179);
+            this.btnRSA.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRSA.Location = new System.Drawing.Point(168, 171);
             this.btnRSA.Name = "btnRSA";
-            this.btnRSA.Size = new System.Drawing.Size(185, 100);
+            this.btnRSA.Size = new System.Drawing.Size(69, 32);
             this.btnRSA.TabIndex = 9;
-            this.btnRSA.Text = "RSA";
+            this.btnRSA.Text = "Encrypt";
             this.btnRSA.UseVisualStyleBackColor = true;
+            this.btnRSA.Click += new System.EventHandler(this.btnRSA_Click);
             // 
             // btnFile
             // 
-            this.btnFile.Location = new System.Drawing.Point(503, 104);
+            this.btnFile.Location = new System.Drawing.Point(263, 9);
             this.btnFile.Name = "btnFile";
             this.btnFile.Size = new System.Drawing.Size(111, 23);
             this.btnFile.TabIndex = 8;
@@ -95,20 +83,56 @@
             // 
             // txtFile
             // 
-            this.txtFile.Location = new System.Drawing.Point(185, 104);
+            this.txtFile.Location = new System.Drawing.Point(40, 12);
             this.txtFile.Name = "txtFile";
-            this.txtFile.Size = new System.Drawing.Size(278, 20);
+            this.txtFile.Size = new System.Drawing.Size(197, 20);
             this.txtFile.TabIndex = 7;
-            //this.txtFile.TextChanged += new System.EventHandler(this.txtFile_TextChanged);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(40, 69);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(491, 85);
+            this.richTextBox1.TabIndex = 14;
+            this.richTextBox1.Text = "";
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Location = new System.Drawing.Point(40, 222);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(491, 95);
+            this.richTextBox2.TabIndex = 15;
+            this.richTextBox2.Text = "";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(263, 171);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(92, 32);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "DEncrypt";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // richTextBox3
+            // 
+            this.richTextBox3.Location = new System.Drawing.Point(569, 108);
+            this.richTextBox3.Name = "richTextBox3";
+            this.richTextBox3.Size = new System.Drawing.Size(238, 209);
+            this.richTextBox3.TabIndex = 17;
+            this.richTextBox3.Text = "";
             // 
             // Staff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(819, 329);
+            this.Controls.Add(this.richTextBox3);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.richTextBox2);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.btnDown);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnText);
             this.Controls.Add(this.btnRSA);
             this.Controls.Add(this.btnFile);
@@ -123,11 +147,13 @@
         #endregion
 
         private System.Windows.Forms.Button btnDown;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnText;
         private System.Windows.Forms.Button btnRSA;
         private System.Windows.Forms.Button btnFile;
         private System.Windows.Forms.TextBox txtFile;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.RichTextBox richTextBox3;
     }
 }

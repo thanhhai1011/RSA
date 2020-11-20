@@ -28,7 +28,7 @@ namespace RSA.module
             try
             {
                 HttpClient htpc = new HttpClient();
-                htpc.BaseAddress = new Uri("http://172.18.170.139:5000/users/api/login");
+                htpc.BaseAddress = new Uri("http://192.168.1.112:5000/users/api/login");
                 var res = htpc.PostAsync("",
                           new StringContent(JsonConvert.SerializeObject(
                           new
@@ -41,10 +41,11 @@ namespace RSA.module
                 Usermodel.user_session = JsonConvert.DeserializeObject<Usermodel>(contents.Result);
                 return 1;
             }
-            catch
+            catch(Exception e)
             {
-                return 0;
+                Console.WriteLine(e);
             }
+            return 0;
         }
         
     }
