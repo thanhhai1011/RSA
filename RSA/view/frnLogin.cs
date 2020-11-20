@@ -28,32 +28,23 @@ namespace RSA
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (Api.post_API(txtUser.Text,txtPassword.Text) == 1)
+            if (Api.post_API_login(txtUser.Text,txtPassword.Text) == 1)
             {
-                Admin ad = new Admin();
-                ad.Show();
+                if (Usermodel.user_session.idrole == 1)
+                {
+                   
+                }
+                else
+                {
+                  
+                }
+                FrmMain.static_FrmMain.panel2.Hide();
             }
             else
             {
                 MessageBox.Show("Sai tai khoan va mat khau", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            //if(view_check_login==1)
-            //{
-            //    if (Usermodel.user_session.role == "admin")
-            //    {
-            //        Admin ad = new Admin();
-            //        ad.Show();
-            //    }
-            //    else
-            //    {
-            //        Staff st = new Staff();
-            //        st.Show();
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Sai mật khẩu hoặc tài khoản", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}    
+           
         }
     }
 }

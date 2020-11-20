@@ -4,11 +4,12 @@ using RSAEncryptionLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using test.module;
-
+using System.Numerics;
 namespace RSA.controller
 {
     class Usercontroller
@@ -48,6 +49,17 @@ namespace RSA.controller
             List<string> list_keys =  Generate_Keys.genertate_key(idkeys);
             rsa = Generate_Keys.load_keys(idkeys);
         }
+        private static BigInteger GetBig(byte[] data)
+        {
+            byte[] inArr = (byte[])data.Clone();
+            Array.Reverse(inArr);  // Reverse the byte order
+            byte[] final = new byte[inArr.Length + 1];  // Add an empty byte at the end, to simulate unsigned BigInteger (no negatives!)
+            Array.Copy(inArr, final, inArr.Length);
+
+            return new BigInteger(final);
+        }
+
+       
         public static string encypt_text(string text)
         {
             create_keys();
@@ -67,8 +79,10 @@ namespace RSA.controller
                     i += 1;
                 }
             }
-
+            int r = text.Length - get_list_text.Count * 50;
+            get_list_text.Add(text.Substring(text.Length - r, r));
             string[] line_text = get_list_text.ToArray();
+           
            
             List<string> k = new List<string>();
             foreach (string line in line_text)
@@ -76,12 +90,17 @@ namespace RSA.controller
                 byte[] message = Encoding.UTF8.GetBytes(line);
                 rsa = Generate_Keys.load_keys(id);
                 byte[] new_enc_byte = rsa.PrivateEncryption(message);
-          
                 byte[] decryptMsg = rsa.PublicDecryption(new_enc_byte);
                 string de_string = Encoding.UTF8.GetString(decryptMsg);
-                if(de_string!=line)
+                string test_string=line;
+                while(de_string!= test_string)
                 {
                     string a = "";
+                    test_string = "k@" + line;
+                    message = Encoding.UTF8.GetBytes(test_string);
+                    new_enc_byte = rsa.PrivateEncryption(message);
+                    decryptMsg = rsa.PublicDecryption(new_enc_byte);
+                    de_string = Encoding.UTF8.GetString(decryptMsg);
                 }
                 int[] bytesAsInts = new_enc_byte.Select(x => (int)x).ToArray();
                 List<string> new_lne = new List<string>();
@@ -98,13 +117,12 @@ namespace RSA.controller
 
         internal static string decypt_text(string text)
         {
-            //byte[] bytes = ints.SelectMany(BitConverter.GetBytes).ToArray();
-            rsa = Generate_Keys.load_keys1(id);
+
+            rsa = Generate_Keys.load_keys(id);
             string[] text_array = text.Split('\n');
             List<string> result = new List<string>();
             foreach (string line in text_array)
-            {
-               
+            { 
                 string[] test = line.Split(' ');
                 int[] myInts = Array.ConvertAll(test, s => int.Parse(s));
                 byte[] bytes = new byte[myInts.Length];
@@ -115,6 +133,10 @@ namespace RSA.controller
 
                 byte[] decryptMsg = rsa.PublicDecryption(bytes);
                 string de_string = Encoding.UTF8.GetString(decryptMsg);
+                if(de_string.StartsWith("k@"))
+                {
+                    de_string = de_string.Substring(2, de_string.Length - 2);
+                }
                 result.Add(de_string);
                 //rsa = Generate_Keys.load_keys1(id);
                 //byte[] decryptMsg = rsa.PublicDecryption(test1);

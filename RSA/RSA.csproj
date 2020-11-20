@@ -68,9 +68,10 @@
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="RSAEncryptionLib">
-      <HintPath>E:\C#\SignatureDecrypter-master\SignatureDecrypter-master\SignatureDecrypter\Bibliotecas\RSAEncryptionLib.dll</HintPath>
+      <HintPath>..\..\..\..\Downloads\SignatureDecrypter-master\SignatureDecrypter-master\SignatureDecrypter\Bibliotecas\RSAEncryptionLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http.WebRequest" />
@@ -87,6 +88,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="controller\Tokencontroller.cs" />
     <Compile Include="model\Rolemodel.cs" />
     <Compile Include="controller\Usercontroller.cs" />
     <Compile Include="module\Api.cs" />
@@ -105,6 +107,12 @@
     <Compile Include="view\frmCreat.Designer.cs">
       <DependentUpon>frmCreat.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\frnLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,17 +129,38 @@
     <Compile Include="view\Manage.Designer.cs">
       <DependentUpon>Manage.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\UC\Login.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\UC\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\UC\RSA_File_manager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\UC\RSA_File_manager.Designer.cs">
+      <DependentUpon>RSA_File_manager.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\Staff.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="view\Staff.Designer.cs">
       <DependentUpon>Staff.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\UC\UCAdmin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="view\UC\UCAdmin.Designer.cs">
+      <DependentUpon>UCAdmin.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="view\Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\frmCreat.resx">
       <DependentUpon>frmCreat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\frnLogin.resx">
       <DependentUpon>frnLogin.cs</DependentUpon>
@@ -148,8 +177,17 @@
     <EmbeddedResource Include="view\Manage.resx">
       <DependentUpon>Manage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="view\UC\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\UC\RSA_File_manager.resx">
+      <DependentUpon>RSA_File_manager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\Staff.resx">
       <DependentUpon>Staff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\UC\UCAdmin.resx">
+      <DependentUpon>UCAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -176,6 +214,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Downloads\RSAExtensions\RSAExtensions\RSAExtensions\RSAExtensions.csproj">
+      <Project>{056a2eb1-7902-44a4-98b6-64748e5d9bfd}</Project>
+      <Name>RSAExtensions</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
