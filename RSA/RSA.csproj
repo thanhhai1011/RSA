@@ -68,7 +68,7 @@
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="RSAEncryptionLib">
-      <HintPath>..\..\..\..\Downloads\SignatureDecrypter-master\SignatureDecrypter-master\SignatureDecrypter\Bibliotecas\RSAEncryptionLib.dll</HintPath>
+      <HintPath>..\RSAEncryptionLib\obj\Debug\RSAEncryptionLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -214,12 +214,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Downloads\RSAExtensions\RSAExtensions\RSAExtensions\RSAExtensions.csproj">
-      <Project>{056a2eb1-7902-44a4-98b6-64748e5d9bfd}</Project>
-      <Name>RSAExtensions</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

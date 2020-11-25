@@ -21,12 +21,12 @@ namespace RSA.view
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            if (Api.CheckToken())
-            {
-                Login lg = new Login();
-                panel2.Controls.Add(lg);
-                lg.Show();
-            }
+            //if (Api.CheckToken())
+            //{
+            //    Login lg = new Login();
+            //    panel2.Controls.Add(lg);
+            //    lg.Show();
+            //}
         }
 
         private void panel1_SizeChanged(object sender, EventArgs e)
