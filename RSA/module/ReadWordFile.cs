@@ -1,9 +1,11 @@
 ﻿using RSA.model;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using test.module;
 
 namespace RSA.module
 {
@@ -33,24 +35,40 @@ namespace RSA.module
             winword.Visible = false;
             object missing = System.Reflection.Missing.Value;
             Microsoft.Office.Interop.Word.Document document = winword.Documents.Add(ref missing, ref missing, ref missing, ref missing);
-            object filename = System.IO.Directory.GetCurrentDirectory() + "/encryptdocs/"+file+".docx";
+            object filename = System.IO.Directory.GetCurrentDirectory() + "/encryptdocs/"+file;
             document.SaveAs2(filename);
             document.Close(ref missing, ref missing, ref missing);
             document = null;
             winword.Quit(ref missing, ref missing, ref missing);
             return filename.ToString();
         }
-        public static void writeWordFile(string text,string file_name)
+        public static void writeWordFile(string text,string file_name,string id)
         {
+
             string file = Usermodel.user_session.id + "_" + file_name;
-            string docx = createWordFile(file);
+            string docx = createWordFile(file).Replace('/','\\');
             
             Microsoft.Office.Interop.Word.Application app = new Microsoft.Office.Interop.Word.Application();
             Microsoft.Office.Interop.Word.Document doc = app.Documents.Open(docx);
+
             object missing = System.Reflection.Missing.Value;
             doc.Content.Text +=text;
             app.Visible = true;  
             doc.Save();
+            Connect.connect();
+            SqlCommand sql = new SqlCommand();
+            SqlDataAdapter sqla = new SqlDataAdapter();
+            string cmd = "insert into FileManager values('" + id + "','" + docx + "','" + DateTime.Now + "')";
+            sql = new SqlCommand(cmd, Connect.public_con);
+            try
+            {
+                sql.ExecuteNonQuery();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
         }
     }
 }

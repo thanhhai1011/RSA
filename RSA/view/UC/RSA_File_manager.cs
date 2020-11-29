@@ -58,10 +58,12 @@ namespace RSA.view
         {
             richTextBox1.Text = ReadWordFile.test(txtFile.Text);
         }
-
+        string idkeys;
         private void btnRSA_Click(object sender, EventArgs e)
         {
-            richTextBox2.Text = Usercontroller.encypt_text(richTextBox1.Text);
+            string[] result = Usercontroller.encypt_text(richTextBox1.Text);
+            richTextBox2.Text = result[0];
+            idkeys = result[1];
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -71,7 +73,16 @@ namespace RSA.view
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ReadWordFile.writeWordFile(richTextBox2.Text, Path.GetFileName(txtFile.Text));
+            try
+            {
+                ReadWordFile.writeWordFile(richTextBox2.Text, Path.GetFileName(txtFile.Text),idkeys);
+                MessageBox.Show("Done", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Fail", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

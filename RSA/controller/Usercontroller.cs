@@ -44,13 +44,14 @@ namespace RSA.controller
         private static void create_keys()
         {
             string idkeys = create_id();
+
             id = idkeys;
             List<string> list_keys =  Generate_Keys.genertate_key(idkeys);
             rsa = Generate_Keys.load_keys(idkeys);
         }
 
        
-        public static string encypt_text(string text)
+        public static string[] encypt_text(string text)
         {
             create_keys();
             int j = 0;
@@ -101,36 +102,61 @@ namespace RSA.controller
                 k.Add(String.Join(" ",new_lne));
             }
             string[] test = k.ToArray();
-            string result = String.Join("\n",test);
+            string[] result = { String.Join("\n", test),id};
             return result;
         }
 
-        internal static string decypt_text(string text)
+        internal static string decypt_text(string text,string file)
         {
 
-            rsa = Generate_Keys.load_keys(id);
+
+            rsa = Generate_Keys.load_keys_from_file(file);
             string[] text_array = text.Split('\n');
+            
             List<string> result = new List<string>();
             foreach (string line in text_array)
-            { 
-                string[] test = line.Split(' ');
-                int[] myInts = Array.ConvertAll(test, s => int.Parse(s));
-                byte[] bytes = new byte[myInts.Length];
-                for (int i=0;i<myInts.Length;i++)
+            {
+                if (line != " " && line!="")
                 {
-                    bytes[i] = (byte)myInts[i];
-                }
+                    try
+                    {
+                        string[] test = line.Split(' ');
+                        int[] myInts = new int[128];
+                        int j = 0;
+                        foreach(string chec in test)
+                        {
+                            try
+                            {
+                                myInts[j] = int.Parse(chec);
+                                j += 1;
+                            }
+                            catch
+                            {
 
-                byte[] decryptMsg = rsa.PublicDecryption(bytes);
-                string de_string = Encoding.UTF8.GetString(decryptMsg);
-                if(de_string.StartsWith("k@"))
-                {
-                    de_string = de_string.Substring(2, de_string.Length - 2);
+                            }
+                        }
+                        byte[] bytes = new byte[myInts.Length];
+                        for (int i = 0; i < myInts.Length; i++)
+                        {
+                            bytes[i] = (byte)myInts[i];
+                        }
+
+                        byte[] decryptMsg = rsa.PublicDecryption(bytes);
+                        string de_string = Encoding.UTF8.GetString(decryptMsg);
+                        if (de_string.StartsWith("k@"))
+                        {
+                            de_string = de_string.Substring(2, de_string.Length - 2);
+                        }
+                        result.Add(de_string);
+                        //rsa = Generate_Keys.load_keys1(id);
+                        //byte[] decryptMsg = rsa.PublicDecryption(test1);
+                        //string de_string = Encoding.UTF8.GetString(decryptMsg);
+                    }
+                    catch
+                    {
+                        Console.WriteLine(1);
+                    }
                 }
-                result.Add(de_string);
-                //rsa = Generate_Keys.load_keys1(id);
-                //byte[] decryptMsg = rsa.PublicDecryption(test1);
-                //string de_string = Encoding.UTF8.GetString(decryptMsg);
             }
             string[] test1 = result.ToArray();
             string enc_result = String.Join("", test1);
