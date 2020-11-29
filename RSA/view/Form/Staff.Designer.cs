@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnDown = new System.Windows.Forms.Button();
             this.btnText = new System.Windows.Forms.Button();
             this.btnRSA = new System.Windows.Forms.Button();
             this.btnFile = new System.Windows.Forms.Button();
@@ -38,16 +37,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.richTextBox3 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
-            // 
-            // btnDown
-            // 
-            this.btnDown.Location = new System.Drawing.Point(569, 69);
-            this.btnDown.Name = "btnDown";
-            this.btnDown.Size = new System.Drawing.Size(111, 23);
-            this.btnDown.TabIndex = 13;
-            this.btnDown.Text = "Generate";
-            this.btnDown.UseVisualStyleBackColor = true;
-            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
             // 
             // btnText
             // 
@@ -117,9 +106,9 @@
             // 
             // richTextBox3
             // 
-            this.richTextBox3.Location = new System.Drawing.Point(569, 108);
+            this.richTextBox3.Location = new System.Drawing.Point(593, 69);
             this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(238, 209);
+            this.richTextBox3.Size = new System.Drawing.Size(289, 248);
             this.richTextBox3.TabIndex = 17;
             this.richTextBox3.Text = "";
             // 
@@ -127,12 +116,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(819, 329);
+            this.ClientSize = new System.Drawing.Size(894, 329);
             this.Controls.Add(this.richTextBox3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.btnDown);
             this.Controls.Add(this.btnText);
             this.Controls.Add(this.btnRSA);
             this.Controls.Add(this.btnFile);
@@ -145,8 +133,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnDown;
         private System.Windows.Forms.Button btnText;
         private System.Windows.Forms.Button btnRSA;
         private System.Windows.Forms.Button btnFile;

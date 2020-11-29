@@ -1,11 +1,13 @@
-﻿using RSA.view;
+﻿// @Date : 15th July 2012
+// @Author : Arpan Jati (arpan4017@yahoo.com; arpan4017@gmail.com)
+// @Application : RSAx Test Application
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RSA
+namespace RSA_Algorithm
 {
     static class Program
     {
@@ -17,8 +19,7 @@ namespace RSA
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            FrmMain.static_FrmMain = new FrmMain();
-            Application.Run(new Staff());
+            Application.Run(new RSAxTestForm());
         }
     }
 }

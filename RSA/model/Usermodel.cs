@@ -25,6 +25,17 @@ namespace RSA.model
                 p_id = value;
             }
         }
+        public string token
+        {
+            get
+            {
+                return p_token;
+            }
+            set
+            {
+                p_token = value;
+            }
+        }
         public string username
         {
             get
@@ -81,13 +92,22 @@ namespace RSA.model
         private string p_username;
         private string p_password;
         private string p_role;
-
+        private string p_token;
         public Usermodel(string _username, string _password)
         {
             p_username = _username;
             p_password = _password;
         }
-        
+
+        public Usermodel(int id)
+        {
+            p_id = id;
+        }
+
+        public Usermodel()
+        {
+        }
+
         private DataTable getUser()
         {
             DataTable dt = new DataTable();
