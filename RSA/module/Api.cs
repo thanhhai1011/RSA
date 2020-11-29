@@ -63,6 +63,31 @@ namespace RSA.module
             return 0;
         }
 
+        internal static void CheckToken(string token)
+        {
+            HttpClient htpc = new HttpClient();
+            string value = System.Configuration.ConfigurationManager.AppSettings["TokenAddress"].ToString();
+            htpc.BaseAddress = new Uri(value);
+            var res = htpc.PostAsync("",new StringContent(JsonConvert.SerializeObject(new{token = token}),Encoding.UTF8, "application/json")).Result;
+            var contents = res.Content.ReadAsStringAsync();
+            Dictionary<string, string> resdict = JsonConvert.DeserializeObject<Dictionary<string, string>>(contents.Result);
+            Usermodel.user_session = new Usermodel();
+            if (resdict["signal"] == "done")
+            {
+                Usermodel.user_session.id= Convert.ToInt32(resdict["user"]);
+                Usermodel.user_session.idrole = Convert.ToInt32(resdict["userrole"]);
+            }
+            if(resdict["signal"]=="login")
+            {
+                Usermodel.user_session.id = -1;
+            }
+            if (resdict["signal"] == "fail")
+            {
+                Usermodel.user_session.id = -1;
+          
+            }
+        }
+
         internal static void Api_token_check()
         {
             string value = System.Configuration.ConfigurationManager.AppSettings["ApiAddress"].ToString();
