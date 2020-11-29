@@ -25,21 +25,11 @@ namespace RSA.view.UC
             {
                 if (Usermodel.user_session.idrole == 1)
                 {
-                    UCAdmin.static_admin = new UCAdmin();
-                    FrmMain.static_FrmMain.panel1.Controls.Add(UCAdmin.static_admin);
-                    UCAdmin.static_admin.Size =new Size(FrmMain.static_FrmMain.panel1.Size.Width, FrmMain.static_FrmMain.panel1.Size.Height);
-                    UCAdmin.static_admin.Show();
+                    RSA_File_manager rsafile = new RSA_File_manager();
+                    FrmMain.static_FrmMain.panel1.Controls.Add(rsafile);
+                    FrmMain.static_FrmMain.panel2.Hide();
+                    rsafile.Show();
                 }
-                else
-                {
-                    RSA_File_manager.static_rsa = new RSA_File_manager();
-                    FrmMain.static_FrmMain.panel1.Controls.Add(RSA_File_manager.static_rsa);
-                    RSA_File_manager.static_rsa.Size = new Size(FrmMain.static_FrmMain.panel1.Size.Width, FrmMain.static_FrmMain.panel1.Size.Height);
-                    RSA_File_manager.static_rsa.Show();
-                }
-                FrmMain.static_FrmMain.panel2.Hide();
-             
-
             }
             else
             {
