@@ -62,7 +62,10 @@ namespace RSA.module
             }
             return 0;
         }
+        internal static void postFile()
+        {
 
+        }
         internal static void CheckToken(string token)
         {
             HttpClient htpc = new HttpClient();
