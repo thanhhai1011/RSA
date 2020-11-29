@@ -1,4 +1,6 @@
-﻿using RSA.view.UC;
+﻿using RSA.model;
+using RSA.module;
+using RSA.view.UC;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,12 +23,33 @@ namespace RSA.view
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            //if (Api.CheckToken())
-            //{
-            //    Login lg = new Login();
-            //    panel2.Controls.Add(lg);
-            //    lg.Show();
-            //}
+            if (System.Configuration.ConfigurationManager.AppSettings["Token"] != null)
+            {
+                string token = System.Configuration.ConfigurationManager.AppSettings["Token"].ToString();
+                Api.CheckToken(token);
+                if(Usermodel.user_session.id>0)
+                {
+                    if(Usermodel.user_session.idrole==1)
+                    {
+                        RSA_File_manager rsafile = new RSA_File_manager();
+                        panel1.Controls.Add(rsafile);
+                        panel2.Hide();
+                        rsafile.Show();
+                    }
+                }
+                if (Usermodel.user_session.id == -1)
+                {
+                    Login lg = new Login();
+                    panel2.Controls.Add(lg);
+                    lg.Show();
+                }
+            }
+            else
+            {
+                Login lg = new Login();
+                panel2.Controls.Add(lg);
+                lg.Show();
+            }
         }
 
         private void panel1_SizeChanged(object sender, EventArgs e)

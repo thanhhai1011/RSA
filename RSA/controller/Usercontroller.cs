@@ -43,20 +43,10 @@ namespace RSA.controller
         }
         private static void create_keys()
         {
-
             string idkeys = create_id();
             id = idkeys;
             List<string> list_keys =  Generate_Keys.genertate_key(idkeys);
             rsa = Generate_Keys.load_keys(idkeys);
-        }
-        private static BigInteger GetBig(byte[] data)
-        {
-            byte[] inArr = (byte[])data.Clone();
-            Array.Reverse(inArr);  // Reverse the byte order
-            byte[] final = new byte[inArr.Length + 1];  // Add an empty byte at the end, to simulate unsigned BigInteger (no negatives!)
-            Array.Copy(inArr, final, inArr.Length);
-
-            return new BigInteger(final);
         }
 
        
