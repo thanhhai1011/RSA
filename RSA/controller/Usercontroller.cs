@@ -112,29 +112,18 @@ namespace RSA.controller
 
             rsa = Generate_Keys.load_keys_from_file(file);
             string[] text_array = text.Split('\n');
-            
+           
             List<string> result = new List<string>();
             foreach (string line in text_array)
             {
-                if (line != " " && line!="")
+                try
                 {
-                    try
+                    if (line != " ")
                     {
-                        string[] test = line.Split(' ');
-                        int[] myInts = new int[128];
-                        int j = 0;
-                        foreach(string chec in test)
-                        {
-                            try
-                            {
-                                myInts[j] = int.Parse(chec);
-                                j += 1;
-                            }
-                            catch
-                            {
 
-                            }
-                        }
+                        string[] test = line.Trim().Split(' ');
+
+                        int[] myInts = Array.ConvertAll(test, s => int.Parse(s));
                         byte[] bytes = new byte[myInts.Length];
                         for (int i = 0; i < myInts.Length; i++)
                         {
@@ -152,10 +141,10 @@ namespace RSA.controller
                         //byte[] decryptMsg = rsa.PublicDecryption(test1);
                         //string de_string = Encoding.UTF8.GetString(decryptMsg);
                     }
-                    catch
-                    {
-                        Console.WriteLine(1);
-                    }
+                }
+                catch
+                {
+                    Console.WriteLine(1);
                 }
             }
             string[] test1 = result.ToArray();
