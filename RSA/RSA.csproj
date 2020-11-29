@@ -215,5 +215,11 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RSAx_Library_src\RSAx_Library_src\RSA_Algorithm\RSA_Algorithm.csproj">
+      <Project>{d9e45f1b-f3ef-4424-a56b-8fa3f1c2d7d1}</Project>
+      <Name>RSA_Algorithm</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

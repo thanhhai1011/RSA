@@ -18,7 +18,7 @@ namespace RSA
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             FrmMain.static_FrmMain = new FrmMain();
-            Application.Run(FrmMain.static_FrmMain);
+            Application.Run(new Staff());
         }
     }
 }
