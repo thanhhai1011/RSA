@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using RSAEncryptionLib;
+using test.module;
 
 namespace RSA.module
 {
@@ -35,13 +37,25 @@ namespace RSA.module
             return myRsa;
 
         }
+        internal static RSAEncryption load_keys_from_file(string file)
+        {
+            Connect.connect();
+            string cmd = "select id from filemanager where myfile_name='" + file + "'";
+            SqlCommand sql = new SqlCommand(cmd,Connect.public_con);
+
+            string idkeys = sql.ExecuteScalar().ToString();
+            RSAEncryption myRsa = new RSAEncryption();
+            string private_keys = String.Format(System.IO.Directory.GetCurrentDirectory() + "/keys/privateKey_{0}.xml", idkeys);
+
+            myRsa.LoadPrivateFromXml(private_keys);
+            return myRsa;
+
+        }
 
         internal static RSAEncryption load_keys1(string idkeys)
         {
             RSAEncryption myRsa = new RSAEncryption();
-            string private_keys = String.Format(System.IO.Directory.GetCurrentDirectory() + "/keys/privateKey_{0}.xml", idkeys);
             string public_keys = String.Format(System.IO.Directory.GetCurrentDirectory() + "/keys/publicKey_{0}.xml", idkeys);
-
             myRsa.LoadPublicFromXml(public_keys);
             return myRsa;
         }

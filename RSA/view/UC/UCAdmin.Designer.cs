@@ -35,13 +35,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.listBox3 = new System.Windows.Forms.ListBox();
-            this.listBox4 = new System.Windows.Forms.ListBox();
-            this.listBox5 = new System.Windows.Forms.ListBox();
-            this.listBox6 = new System.Windows.Forms.ListBox();
-            this.listBox7 = new System.Windows.Forms.ListBox();
-            this.listBox8 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
@@ -109,74 +102,11 @@
             this.linkLabel3.TabStop = true;
             this.linkLabel3.Text = "linkLabel3";
             // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(338, 178);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(120, 95);
-            this.listBox2.TabIndex = 7;
-            // 
-            // listBox3
-            // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(346, 186);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(120, 95);
-            this.listBox3.TabIndex = 8;
-            // 
-            // listBox4
-            // 
-            this.listBox4.FormattingEnabled = true;
-            this.listBox4.Location = new System.Drawing.Point(354, 194);
-            this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(120, 95);
-            this.listBox4.TabIndex = 9;
-            // 
-            // listBox5
-            // 
-            this.listBox5.FormattingEnabled = true;
-            this.listBox5.Location = new System.Drawing.Point(362, 202);
-            this.listBox5.Name = "listBox5";
-            this.listBox5.Size = new System.Drawing.Size(120, 95);
-            this.listBox5.TabIndex = 10;
-            // 
-            // listBox6
-            // 
-            this.listBox6.FormattingEnabled = true;
-            this.listBox6.Location = new System.Drawing.Point(370, 210);
-            this.listBox6.Name = "listBox6";
-            this.listBox6.Size = new System.Drawing.Size(120, 95);
-            this.listBox6.TabIndex = 11;
-            // 
-            // listBox7
-            // 
-            this.listBox7.FormattingEnabled = true;
-            this.listBox7.Location = new System.Drawing.Point(378, 218);
-            this.listBox7.Name = "listBox7";
-            this.listBox7.Size = new System.Drawing.Size(120, 95);
-            this.listBox7.TabIndex = 12;
-            // 
-            // listBox8
-            // 
-            this.listBox8.FormattingEnabled = true;
-            this.listBox8.Location = new System.Drawing.Point(386, 226);
-            this.listBox8.Name = "listBox8";
-            this.listBox8.Size = new System.Drawing.Size(120, 95);
-            this.listBox8.TabIndex = 13;
-            // 
             // UCAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Controls.Add(this.listBox8);
-            this.Controls.Add(this.listBox7);
-            this.Controls.Add(this.listBox6);
-            this.Controls.Add(this.listBox5);
-            this.Controls.Add(this.listBox4);
-            this.Controls.Add(this.listBox3);
-            this.Controls.Add(this.listBox2);
             this.Controls.Add(this.linkLabel3);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label3);
@@ -200,12 +130,5 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.LinkLabel linkLabel3;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.ListBox listBox3;
-        private System.Windows.Forms.ListBox listBox4;
-        private System.Windows.Forms.ListBox listBox5;
-        private System.Windows.Forms.ListBox listBox6;
-        private System.Windows.Forms.ListBox listBox7;
-        private System.Windows.Forms.ListBox listBox8;
     }
 }

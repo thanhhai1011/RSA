@@ -12,7 +12,7 @@ namespace test.module
         public static SqlConnection public_con;
         public static int connect()
         { // Copy Data Source vào chuỗi
-            String cn = @"Data Source=WINDOWS10\SQLEXPRESS;Initial Catalog=testdatabase;Integrated Security=True";
+            String cn = @"Data Source=WINDOWS10\SQLEXPRESS;Initial Catalog=RSA;Integrated Security=True";
             try
             {
                 public_con = new SqlConnection(cn);

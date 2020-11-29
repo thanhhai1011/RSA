@@ -1,39 +1,50 @@
-﻿using RSA.controller;
-using RSA.module;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using RSA.module;
+using RSA.controller;
 
-namespace RSA.view
+namespace RSA.view.UC
 {
-    public partial class Staff : Form
+    public partial class DecryptText : UserControl
     {
-        public Staff()
+        public DecryptText()
         {
             InitializeComponent();
+        }
+
+        private void btnRSA_Click(object sender, EventArgs e)
+        {
+            richTextBox2.Text = Usercontroller.decypt_text(richTextBox1.Text, txtFile.Text);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+         
         }
 
         private void btnFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
-            if (dlg.ShowDialog()==DialogResult.OK)
+            if (dlg.ShowDialog() == DialogResult.OK)
             {
-                string fileName=dlg.FileName;
-                txtFile.Text = fileName; 
+                string fileName = dlg.FileName;
+                txtFile.Text = fileName;
             }
             string filePath = dlg.FileName;
             string[] lines;
             string str;
-            if(System.IO.File.Exists(filePath))
+            if (System.IO.File.Exists(filePath))
             {
                 lines = System.IO.File.ReadAllLines(filePath);
-                for(int i=0;i<lines.Length;i++)
+                for (int i = 0; i < lines.Length; i++)
                 {
                     Console.WriteLine("Line{0}: {1}", i, lines[i]);
                 }
@@ -50,24 +61,7 @@ namespace RSA.view
         private void btnText_Click(object sender, EventArgs e)
         {
             richTextBox1.Text = ReadWordFile.test(txtFile.Text);
-
-        }
-        
-        private void btnDown_Click(object sender, EventArgs e)
-        {
-            
-
-
         }
 
-        private void btnRSA_Click(object sender, EventArgs e)
-        {
-            richTextBox2.Text = Usercontroller.encypt_text(richTextBox1.Text)[0];
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            richTextBox3.Text=  Usercontroller.decypt_text(richTextBox2.Text, txtFile.Text);
-        }
     }
 }
