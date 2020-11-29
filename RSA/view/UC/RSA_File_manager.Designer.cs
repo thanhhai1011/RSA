@@ -41,7 +41,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(536, 373);
+            this.button1.Location = new System.Drawing.Point(748, 415);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(92, 32);
             this.button1.TabIndex = 24;
@@ -55,7 +55,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.richTextBox2.Location = new System.Drawing.Point(19, 314);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(491, 100);
+            this.richTextBox2.Size = new System.Drawing.Size(491, 114);
             this.richTextBox2.TabIndex = 23;
             this.richTextBox2.Text = "";
             // 
@@ -130,10 +130,8 @@
             this.Controls.Add(this.btnRSA);
             this.Controls.Add(this.btnFile);
             this.Controls.Add(this.txtFile);
-            this.MaximumSize = new System.Drawing.Size(796, 436);
-            this.MinimumSize = new System.Drawing.Size(796, 436);
             this.Name = "RSA_File_manager";
-            this.Size = new System.Drawing.Size(796, 436);
+            this.Size = new System.Drawing.Size(840, 450);
             this.Load += new System.EventHandler(this.RSA_File_manager_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

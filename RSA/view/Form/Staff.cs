@@ -62,12 +62,12 @@ namespace RSA.view
 
         private void btnRSA_Click(object sender, EventArgs e)
         {
-            richTextBox2.Text = Usercontroller.encypt_text(richTextBox1.Text)[0];
+            richTextBox2.Text = Usercontroller.encypt_text(richTextBox1.Text);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            richTextBox3.Text=  Usercontroller.decypt_text(richTextBox2.Text, txtFile.Text);
+            richTextBox3.Text=  Usercontroller.decypt_text(richTextBox2.Text);
         }
     }
 }

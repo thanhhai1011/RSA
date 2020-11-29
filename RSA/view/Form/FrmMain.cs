@@ -20,8 +20,7 @@ namespace RSA.view
         {
             InitializeComponent();
         }
-        public RSA_File_manager rsafile;
-        public DecryptText dt;
+
         private void FrmMain_Load(object sender, EventArgs e)
         {
             if (System.Configuration.ConfigurationManager.AppSettings["Token"] != null)
@@ -32,14 +31,10 @@ namespace RSA.view
                 {
                     if(Usermodel.user_session.idrole==1)
                     {
-                        rsafile = new RSA_File_manager();
+                        RSA_File_manager rsafile = new RSA_File_manager();
                         panel1.Controls.Add(rsafile);
                         panel2.Hide();
                         rsafile.Show();
-                        dt = new DecryptText();
-                        panel1.Controls.Add(dt);
-                        dt.Hide(); 
-                 
                     }
                 }
                 if (Usermodel.user_session.id == -1)
@@ -72,19 +67,6 @@ namespace RSA.view
                 RSA_File_manager.static_rsa.Size = new Size(FrmMain.static_FrmMain.panel1.Size.Width, FrmMain.static_FrmMain.panel1.Size.Height);
             }
 
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            dt.Show();
-            rsafile.Hide();
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            dt.Hide();
-            rsafile.Show();
         }
     }
 }
