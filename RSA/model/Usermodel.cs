@@ -98,7 +98,16 @@ namespace RSA.model
             p_username = _username;
             p_password = _password;
         }
-        
+
+        public Usermodel(int id)
+        {
+            p_id = id;
+        }
+
+        public Usermodel()
+        {
+        }
+
         private DataTable getUser()
         {
             DataTable dt = new DataTable();
