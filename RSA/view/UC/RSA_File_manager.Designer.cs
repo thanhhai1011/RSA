@@ -35,13 +35,13 @@
             this.btnRSA = new System.Windows.Forms.Button();
             this.btnFile = new System.Windows.Forms.Button();
             this.txtFile = new System.Windows.Forms.TextBox();
-            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(114, 276);
+            this.button1.Location = new System.Drawing.Point(748, 415);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(92, 32);
             this.button1.TabIndex = 24;
@@ -83,7 +83,7 @@
             this.btnRSA.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRSA.Location = new System.Drawing.Point(19, 276);
             this.btnRSA.Name = "btnRSA";
-            this.btnRSA.Size = new System.Drawing.Size(89, 32);
+            this.btnRSA.Size = new System.Drawing.Size(102, 32);
             this.btnRSA.TabIndex = 20;
             this.btnRSA.Text = "Encrypt";
             this.btnRSA.UseVisualStyleBackColor = true;
@@ -106,23 +106,23 @@
             this.txtFile.Size = new System.Drawing.Size(197, 20);
             this.txtFile.TabIndex = 18;
             // 
-            // richTextBox3
+            // button2
             // 
-            this.richTextBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox3.Location = new System.Drawing.Point(516, 111);
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(277, 317);
-            this.richTextBox3.TabIndex = 25;
-            this.richTextBox3.Text = "";
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(127, 276);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(100, 32);
+            this.button2.TabIndex = 26;
+            this.button2.Text = "Download ";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // RSA_File_manager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Controls.Add(this.richTextBox3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.richTextBox1);
@@ -131,7 +131,7 @@
             this.Controls.Add(this.btnFile);
             this.Controls.Add(this.txtFile);
             this.Name = "RSA_File_manager";
-            this.Size = new System.Drawing.Size(796, 450);
+            this.Size = new System.Drawing.Size(840, 450);
             this.Load += new System.EventHandler(this.RSA_File_manager_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -147,6 +147,6 @@
         private System.Windows.Forms.Button btnRSA;
         private System.Windows.Forms.Button btnFile;
         private System.Windows.Forms.TextBox txtFile;
-        private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.Button button2;
     }
 }
