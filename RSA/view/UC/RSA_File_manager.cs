@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using RSA.module;
 using RSA.controller;
+using System.IO;
 
 namespace RSA.view
 {
@@ -65,7 +66,12 @@ namespace RSA.view
 
         private void button1_Click(object sender, EventArgs e)
         {
-            richTextBox3.Text = Usercontroller.decypt_text(richTextBox2.Text);
+            //richTextBox3.Text = Usercontroller.decypt_text(richTextBox2.Text);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ReadWordFile.writeWordFile(richTextBox2.Text, Path.GetFileName(txtFile.Text));
         }
     }
 }
