@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,7 +32,6 @@ namespace RSA.module
         private static string createWordFile(string file)
         {
             Microsoft.Office.Interop.Word.Application winword = new Microsoft.Office.Interop.Word.Application();
-            winword.ShowAnimation = false;
             winword.Visible = false;
             object missing = System.Reflection.Missing.Value;
             Microsoft.Office.Interop.Word.Document document = winword.Documents.Add(ref missing, ref missing, ref missing, ref missing);
@@ -42,33 +42,24 @@ namespace RSA.module
             winword.Quit(ref missing, ref missing, ref missing);
             return filename.ToString();
         }
-        public static void writeWordFile(string text,string file_name,string id)
+        public static string GetRandomString()
         {
-
+            string path = Path.GetRandomFileName();
+            path = path.Replace(".", ""); // Remove period.
+            return path;
+        }
+        public static string writeWordFile(string text,string file_name,string id)
+        {
             string file = Usermodel.user_session.id + "_" + file_name;
-            string docx = createWordFile(file).Replace('/','\\');
-            
+            string docx = createWordFile(Path.GetFileNameWithoutExtension(file)+"_"+GetRandomString() + Path.GetExtension(file)).Replace('/','\\');
             Microsoft.Office.Interop.Word.Application app = new Microsoft.Office.Interop.Word.Application();
             Microsoft.Office.Interop.Word.Document doc = app.Documents.Open(docx);
-
             object missing = System.Reflection.Missing.Value;
             doc.Content.Text +=text;
-            app.Visible = true;  
+            app.Visible = false;  
             doc.Save();
-            Connect.connect();
-            SqlCommand sql = new SqlCommand();
-            SqlDataAdapter sqla = new SqlDataAdapter();
-            string cmd = "insert into FileManager values('" + id + "','" + docx + "','" + DateTime.Now + "')";
-            sql = new SqlCommand(cmd, Connect.public_con);
-            try
-            {
-                sql.ExecuteNonQuery();
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine(e);
-            }
-
+            doc.Close();
+            return docx;
         }
     }
 }

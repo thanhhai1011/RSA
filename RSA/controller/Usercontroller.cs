@@ -106,11 +106,11 @@ namespace RSA.controller
             return result;
         }
 
-        internal static string decypt_text(string text,string file)
+        internal static string decypt_text(string text,string key)
         {
 
 
-            rsa = Generate_Keys.load_keys_from_file(file);
+            rsa = Generate_Keys.load_keysFile(key);
             string[] text_array = text.Split('\n');
            
             List<string> result = new List<string>();

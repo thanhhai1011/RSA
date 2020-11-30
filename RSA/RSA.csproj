@@ -78,6 +78,7 @@
     <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Runtime" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -89,54 +90,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="controller\FileController.cs" />
     <Compile Include="controller\Tokencontroller.cs" />
-    <Compile Include="RSA.cs">
-      <DependentUpon>RSA.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="RSA.designer.cs">
+    <Compile Include="DBFileManager.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RSA.dbml</DependentUpon>
+      <DependentUpon>DBFileManager.dbml</DependentUpon>
     </Compile>
+    <Compile Include="model\FileModel.cs" />
     <Compile Include="model\Rolemodel.cs" />
     <Compile Include="controller\Usercontroller.cs" />
+    <Compile Include="model\SFileModel.cs" />
+    <Compile Include="model\SUserModel.cs" />
     <Compile Include="module\Api.cs" />
     <Compile Include="module\Generate_Keys.cs" />
     <Compile Include="module\ReadWordFile.cs" />
     <Compile Include="module\RSA.cs" />
-    <Compile Include="view\Form\Admin.cs">
+    <Compile Include="view\FormViewList\FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\Form\Admin.Designer.cs">
-      <DependentUpon>Admin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\Form\frmCreat.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\Form\frmCreat.Designer.cs">
-      <DependentUpon>frmCreat.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\Form\FrmMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\Form\FrmMain.Designer.cs">
+    <Compile Include="view\FormViewList\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="view\Form\frnLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="view\Form\frnLogin.Designer.cs">
-      <DependentUpon>frnLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="model\Usermodel.cs" />
     <Compile Include="module\Connect.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="view\Form\Manage.cs">
+    <Compile Include="view\FormViewList\UserViewAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="view\Form\Manage.Designer.cs">
-      <DependentUpon>Manage.cs</DependentUpon>
+    <Compile Include="view\FormViewList\UserViewAdd.Designer.cs">
+      <DependentUpon>UserViewAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="view\UC\Login.cs">
       <SubType>UserControl</SubType>
@@ -150,11 +134,11 @@
     <Compile Include="view\UC\RSA_File_manager.Designer.cs">
       <DependentUpon>RSA_File_manager.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\Form\Staff.cs">
-      <SubType>Form</SubType>
+    <Compile Include="view\UC\ServerMonitor.cs">
+      <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="view\Form\Staff.Designer.cs">
-      <DependentUpon>Staff.cs</DependentUpon>
+    <Compile Include="view\UC\ServerMonitor.Designer.cs">
+      <DependentUpon>ServerMonitor.cs</DependentUpon>
     </Compile>
     <Compile Include="view\UC\UCAdmin.cs">
       <SubType>UserControl</SubType>
@@ -168,17 +152,8 @@
     <Compile Include="view\UC\DecryptText.Designer.cs">
       <DependentUpon>DecryptText.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="view\Form\Admin.resx">
-      <DependentUpon>Admin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\Form\frmCreat.resx">
-      <DependentUpon>frmCreat.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\Form\FrmMain.resx">
+    <EmbeddedResource Include="view\FormViewList\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="view\Form\frnLogin.resx">
-      <DependentUpon>frnLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -189,8 +164,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="view\Form\Manage.resx">
-      <DependentUpon>Manage.cs</DependentUpon>
+    <EmbeddedResource Include="view\FormViewList\UserViewAdd.resx">
+      <DependentUpon>UserViewAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\UC\DecryptText.resx">
       <DependentUpon>DecryptText.cs</DependentUpon>
@@ -201,19 +176,19 @@
     <EmbeddedResource Include="view\UC\RSA_File_manager.resx">
       <DependentUpon>RSA_File_manager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="view\Form\Staff.resx">
-      <DependentUpon>Staff.cs</DependentUpon>
+    <EmbeddedResource Include="view\UC\ServerMonitor.resx">
+      <DependentUpon>ServerMonitor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\UC\UCAdmin.resx">
       <DependentUpon>UCAdmin.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="RSA.dbml">
+    <None Include="DBFileManager.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>RSA.designer.cs</LastGenOutput>
+      <LastGenOutput>DBFileManager.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="RSA.dbml.layout">
-      <DependentUpon>RSA.dbml</DependentUpon>
+    <None Include="DBFileManager.dbml.layout">
+      <DependentUpon>DBFileManager.dbml</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

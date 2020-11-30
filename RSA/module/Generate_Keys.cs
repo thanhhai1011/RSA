@@ -51,6 +51,17 @@ namespace RSA.module
             return myRsa;
 
         }
+        internal static RSAEncryption load_keysFile(string filekey)
+        {
+        
+            RSAEncryption myRsa = new RSAEncryption();
+            string public_keys = filekey;
+
+            myRsa.LoadPublicFromXml(public_keys);
+            return myRsa;
+
+        }
+
 
         internal static RSAEncryption load_keys1(string idkeys)
         {

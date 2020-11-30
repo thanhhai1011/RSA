@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using RSA.module;
 using RSA.controller;
 using System.IO;
+using RSA.model;
 
 namespace RSA.view
 {
@@ -20,10 +21,44 @@ namespace RSA.view
         {
             InitializeComponent();
         }
+        public DataTable getListFile()
+        {
+            DataTable dtb = new DataTable();
+            return dtb;
+        }
+        public void load()
+        {
+            txtFile.Text = "";
+            textBox1.Text = "";
+            richTextBox1.Text = "";
+            richTextBox2.Text = "";
+            DataTable datafile = new DataTable();
+            datafile.Columns.Add("file", typeof(String));
+            datafile.Columns.Add("create_at", typeof(String));
+            string filepath = System.IO.Directory.GetCurrentDirectory() + "/encryptdocs/";
+            DirectoryInfo d = new DirectoryInfo(filepath);
 
+            foreach (var file in d.GetFiles("*.doc"))
+            {
+                if (file.Name[0].ToString() != "~")
+                {
+                    datafile.Rows.Add(file.Name, file.CreationTime);
+                }
+            }
+            foreach (var file in d.GetFiles("*.docx"))
+            {
+                if (file.Name[0].ToString() != "~")
+                {
+                    datafile.Rows.Add(file.Name, file.CreationTime);
+                }
+            }
+
+            dataGridView1.DataSource = datafile;
+
+        }
         private void RSA_File_manager_Load(object sender, EventArgs e)
         {
-
+            load();
         }
 
         private void btnFile_Click(object sender, EventArgs e)
@@ -70,19 +105,54 @@ namespace RSA.view
         {
             //richTextBox3.Text = Usercontroller.decypt_text(richTextBox2.Text);
         }
-
+        string filetext;
+        public static string GetRandomString()
+        {
+            string path = Path.GetRandomFileName();
+            path = path.Replace(".", ""); // Remove period.
+            return path;
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             try
             {
-                ReadWordFile.writeWordFile(richTextBox2.Text, Path.GetFileName(txtFile.Text),idkeys);
+                filetext= ReadWordFile.writeWordFile(richTextBox2.Text, Path.GetFileName(txtFile.Text),idkeys);
+                FileModel fm = new FileModel(idkeys,filetext);
+                fm.insertFile();
+
                 MessageBox.Show("Done", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                RSA_File_manager_Load(sender, e);
 
             }
             catch (Exception)
             {
                 MessageBox.Show("Fail", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+           
+           string[] infor = FileController.getPubickeys(textBox1.Text);
+           string filePath = infor[1];
+           string public_key = System.IO.Directory.GetCurrentDirectory() + "/keys/" + "publicKey_" + infor[0]+".xml";
+           int check = Api.uploadFile(filePath,public_key);
+           if(check==200)
+           {
+                System.IO.File.Delete(filePath);
+                FrmMain.static_FrmMain.serverm.load();
+                load();
+                MessageBox.Show("Upload Complete!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+           }
+           else
+           {
+                MessageBox.Show("Fail!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+           }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBox1.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
         }
     }
 }

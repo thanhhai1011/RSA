@@ -23,12 +23,9 @@ namespace RSA.view.UC
         {
             if (Api.post_API_login(txtUser.Text, txtPassword.Text) == 1)
             {
-                if (Usermodel.user_session.idrole == 1)
+                if (Usermodel.user_session.idrole == 2)
                 {
-                    RSA_File_manager rsafile = new RSA_File_manager();
-                    FrmMain.static_FrmMain.panel1.Controls.Add(rsafile);
-                    FrmMain.static_FrmMain.panel2.Hide();
-                    rsafile.Show();
+                    FrmMain.static_FrmMain.loadMainStaff();
                 }
             }
             else
