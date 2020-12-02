@@ -116,6 +116,12 @@ namespace RSA.view.UC
                 uva.idfile =Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
                 uva.Show();
             }
+            if(file_view==1)
+            {
+                UserviewAdd1 uva1 = new UserviewAdd1();
+                uva1.idfile = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+                uva1.Show();
+            }
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -134,6 +140,17 @@ namespace RSA.view.UC
         }
 
         private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            file_view = 1;
+            dataGridView1.DataSource = Api.getalllistfile();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

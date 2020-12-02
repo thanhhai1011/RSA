@@ -126,6 +126,12 @@
     <Compile Include="view\FormViewList\UserViewAdd.Designer.cs">
       <DependentUpon>UserViewAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="view\FormViewList\UserviewAdd1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\FormViewList\UserviewAdd1.Designer.cs">
+      <DependentUpon>UserviewAdd1.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\UC\Login.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -170,6 +176,9 @@
     </Compile>
     <EmbeddedResource Include="view\FormViewList\UserViewAdd.resx">
       <DependentUpon>UserViewAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\FormViewList\UserviewAdd1.resx">
+      <DependentUpon>UserviewAdd1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\UC\DecryptText.resx">
       <DependentUpon>DecryptText.cs</DependentUpon>

@@ -31,7 +31,7 @@ namespace RSA.module
             dtb.Columns.Add("id", typeof(String));
             dtb.Columns.Add("email", typeof(String));
             string token = System.Configuration.ConfigurationManager.AppSettings["Token"].ToString();
-            string value = System.Configuration.ConfigurationManager.AppSettings["getlistUser"].ToString();
+            string value = System.Configuration.ConfigurationManager.AppSettings["getlistUser"].ToString();  
             HttpClient htpc = new HttpClient();
             htpc.BaseAddress = new Uri(value);
             var res = htpc.PostAsync("",
@@ -49,6 +49,31 @@ namespace RSA.module
             return dtb;
         }
 
+        internal static DataTable getalllistfile()
+        {
+            DataTable dtb = new DataTable();
+            dtb.Columns.Add("id", typeof(String));
+            dtb.Columns.Add("file_name", typeof(String));
+            dtb.Columns.Add("public_key", typeof(String));
+            dtb.Columns.Add("date_upload", typeof(String));
+            string token = System.Configuration.ConfigurationManager.AppSettings["Token"].ToString();
+            string value = System.Configuration.ConfigurationManager.AppSettings["getallfile"].ToString();
+            HttpClient htpc = new HttpClient();
+            htpc.BaseAddress = new Uri(value);
+            var res = htpc.PostAsync("",
+                new StringContent(JsonConvert.SerializeObject(
+                     new { token = token }
+                ), Encoding.UTF8, "application/json")).Result;
+            var contents = res.Content.ReadAsStringAsync();
+            List<SFileModel> fm = new List<SFileModel>();
+            fm = JsonConvert.DeserializeObject<List<SFileModel>>(contents.Result);
+            foreach (SFileModel item in fm)
+            {
+                DateTime dt = Convert.ToDateTime(item.create_at);
+                dtb.Rows.Add(item.id, item.filename, item.key, (dt.Day + "/" + dt.Month + "/" + dt.Year).ToString());
+            }
+            return dtb;
+        }
         internal static int AddUserofSharedFile(string email,string idfile)
         {
             string token = System.Configuration.ConfigurationManager.AppSettings["Token"].ToString();
@@ -237,6 +262,31 @@ namespace RSA.module
         {
             string value = System.Configuration.ConfigurationManager.AppSettings["ApiAddress"].ToString();
             
+        }
+        internal static int check_permision_of_file(string idfile)
+        {
+            DataTable dtb = new DataTable();
+            dtb.Columns.Add("id", typeof(String));
+            dtb.Columns.Add("file_name", typeof(String));
+            dtb.Columns.Add("public_key", typeof(String));
+            dtb.Columns.Add("date_upload", typeof(String));
+            string token = System.Configuration.ConfigurationManager.AppSettings["Token"].ToString();
+            string value = System.Configuration.ConfigurationManager.AppSettings["check_permision"].ToString();
+            HttpClient htpc = new HttpClient();
+            htpc.BaseAddress = new Uri(value);
+            var res = htpc.PostAsync("",
+                new StringContent(JsonConvert.SerializeObject(
+                     new { token = token }
+                ), Encoding.UTF8, "application/json")).Result;
+            var contents = res.Content.ReadAsStringAsync();
+            if(contents.ToString()==1.ToString())
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
 }

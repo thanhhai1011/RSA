@@ -127,6 +127,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(362, 332);
             this.dataGridView1.TabIndex = 36;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label1
             // 
@@ -148,6 +149,7 @@
             this.label2.Size = new System.Drawing.Size(85, 13);
             this.label2.TabIndex = 38;
             this.label2.Text = "Your Shared File";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // backgroundWorker1
             // 

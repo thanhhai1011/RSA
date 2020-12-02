@@ -29,8 +29,6 @@ namespace RSA.view.FormViewList
            webClient = new WebClient();
            webClient.DownloadProgressChanged += new DownloadProgressChangedEventHandler(webClient_DownloadProgressChanged);
            webClient.DownloadFileCompleted += new AsyncCompletedEventHandler(webClient_DownloadFileCompleted);
-
-         
         }
         private string FormatBytes(long bytes, int decimalPlaces, bool showByteType)
         {
@@ -143,9 +141,12 @@ namespace RSA.view.FormViewList
 
             if (api!="fail")
             {
-                label2.Text = "Wait";
-                try { webClient.DownloadFileAsync(new Uri("http://192.168.2.2:5000"+api), @"C:\\Users\\nam\\Desktop\\test\\"+Path.GetFileName(api)); }
-                catch { this.DialogResult = DialogResult.No; this.Close(); }
+                if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    label2.Text = "Wait";
+                    try { webClient.DownloadFileAsync(new Uri("http://192.168.2.2:5000" + api), folderBrowserDialog1.SelectedPath+@"\\" + Path.GetFileName(api)); }
+                    catch { this.DialogResult = DialogResult.No; this.Close(); }
+                }
             }
         }
 

@@ -36,7 +36,7 @@ namespace RSA
     #endregion
 		
 		public DBFileManagerDataContext() : 
-				base(global::RSA.Properties.Settings.Default.RSAConnectionString1, mappingSource)
+				base(global::RSA.Properties.Settings.Default.RSAConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

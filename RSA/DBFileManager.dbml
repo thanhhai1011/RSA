@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="RSA" Class="DBFileManagerDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=(local);Initial Catalog=RSA;Integrated Security=True" SettingsObjectName="RSA.Properties.Settings" SettingsPropertyName="RSAConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=WINDOWS10\SQLEXPRESS;Initial Catalog=RSA;Integrated Security=True" SettingsObjectName="RSA.Properties.Settings" SettingsPropertyName="RSAConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.myfile" Member="myfiles">
     <Type Name="myfile">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
