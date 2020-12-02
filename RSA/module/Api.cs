@@ -132,6 +132,7 @@ namespace RSA.module
             FileStream stream = File.OpenRead(file);
             byte[] fileBytes = new byte[stream.Length];
             stream.Read(fileBytes, 0, fileBytes.Length);
+            
             FileStream stream1 = File.OpenRead(public_key);
             byte[] fileBytes1 = new byte[stream1.Length];
             stream1.Read(fileBytes1, 0, fileBytes1.Length);
@@ -139,15 +140,34 @@ namespace RSA.module
             using (var content = new MultipartFormDataContent())
             {
                 content.Add(new StringContent(Usermodel.user_session.id.ToString()), "iduser");
-                content.Add(CreateFileContent(stream, Path.GetFileName(file),MimeMapping.GetMimeMapping(file)));
-                content.Add(CreateFileContent(stream1, Path.GetFileName(public_key), MimeMapping.GetMimeMapping(public_key)));
+                content.Add(new ByteArrayContent(fileBytes,0, fileBytes.Length), "files", Path.GetFileName(file));
+                content.Add(new ByteArrayContent(fileBytes1, 0, fileBytes1.Length), "files", Path.GetFileName(public_key));
 
                 var test = httpClient.PostAsync(value, content).Result;
-
+                stream.Close();
+                stream1.Close();
                 return Convert.ToInt32(test.EnsureSuccessStatusCode().StatusCode);
             }
 
 
+        }
+
+        internal static string DownloadFile(string id)
+        {
+            HttpClient htpc = new HttpClient();
+            string token = System.Configuration.ConfigurationManager.AppSettings["Token"].ToString();
+            string value = System.Configuration.ConfigurationManager.AppSettings["downloadFile"].ToString();
+            htpc.BaseAddress = new Uri(value);
+            var res = htpc.PostAsync("",
+                      new StringContent(JsonConvert.SerializeObject(
+                      new
+                      {
+                          token = token,
+                          id = id
+                      }),
+                      Encoding.UTF8, "application/json")).Result;
+            string contents = res.Content.ReadAsStringAsync().Result.ToString();
+            return contents;
         }
 
         public static int post_API_login(string username,string password)

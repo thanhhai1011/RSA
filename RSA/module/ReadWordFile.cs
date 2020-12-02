@@ -22,6 +22,7 @@ namespace RSA.module
             string totaltext = "";
             for (int i = 0; i < docs.Paragraphs.Count; i++)
             {
+                
                 totaltext += " \r\n " + docs.Paragraphs[i + 1].Range.Text.ToString();
             }
             docs.Close();

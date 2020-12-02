@@ -53,57 +53,7 @@ namespace RSA.controller
        
         public static string[] encypt_text(string text)
         {
-            create_keys();
-            int j = 0;
-            int i = 0;
-            List<string> get_list_text = new List<string>();
-            while(i<text.Length)
-            {
-                if (j == 50)
-                {
-                    get_list_text.Add(text.Substring(i-50, 50));
-                    j = 0;
-                }
-                else
-                {
-                    j += 1;
-                    i += 1;
-                }
-            }
-            int r = text.Length - get_list_text.Count * 50;
-            get_list_text.Add(text.Substring(text.Length - r, r));
-            string[] line_text = get_list_text.ToArray();
-           
-           
-            List<string> k = new List<string>();
-            foreach (string line in line_text)
-            {
-                byte[] message = Encoding.UTF8.GetBytes(line);
-                rsa = Generate_Keys.load_keys(id);
-                byte[] new_enc_byte = rsa.PrivateEncryption(message);
-                byte[] decryptMsg = rsa.PublicDecryption(new_enc_byte);
-                string de_string = Encoding.UTF8.GetString(decryptMsg);
-                string test_string=line;
-                while(de_string!= test_string)
-                {
-                    string a = "";
-                    test_string = "k@" + line;
-                    message = Encoding.UTF8.GetBytes(test_string);
-                    new_enc_byte = rsa.PrivateEncryption(message);
-                    decryptMsg = rsa.PublicDecryption(new_enc_byte);
-                    de_string = Encoding.UTF8.GetString(decryptMsg);
-                }
-                int[] bytesAsInts = new_enc_byte.Select(x => (int)x).ToArray();
-                List<string> new_lne = new List<string>();
-                foreach(int a in bytesAsInts)
-                {
-                    new_lne.Add(a.ToString());
-                }
-                k.Add(String.Join(" ",new_lne));
-            }
-            string[] test = k.ToArray();
-            string[] result = { String.Join("\n", test),id};
-            return result;
+            return null;
         }
 
         internal static string decypt_text(string text,string key)
